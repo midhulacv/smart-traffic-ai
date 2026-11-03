@@ -4,124 +4,184 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Traffic AI</title>
+<title>Smart Traffic AI | Intelligent Traffic Management</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:#071426;color:#edf5ff;font-family:Arial,sans-serif;line-height:1.7}
-header{padding:18px 6%;display:flex;justify-content:space-between;align-items:center;background:#0b1c32;position:sticky;top:0;z-index:10}
-.logo{color:#48c6ff;font-weight:bold;font-size:19px}
-nav a{color:#c7d7e9;text-decoration:none;margin-left:12px;font-size:13px}
-.hero{padding:90px 7%;text-align:center;background:linear-gradient(135deg,#102d50,#071426)}
-.tag{color:#48c6ff;letter-spacing:3px;font-size:12px}
-h1{font-size:clamp(32px,6vw,55px);line-height:1.2;margin:22px 0}
-h1 span,h2 span{color:#48c6ff}
-.hero p{max-width:650px;margin:auto;color:#b6c9dc}
-.btn{display:inline-block;margin-top:28px;padding:13px 25px;border-radius:8px;background:#168bd0;color:white;text-decoration:none;font-weight:bold}
-section{padding:65px 7%}
-h2{font-size:29px;margin-bottom:22px}
-p{color:#b6c9dc;margin-bottom:16px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:25px}
-.card{background:#10243c;border:1px solid #1d4263;padding:23px;border-radius:12px}
-.card h3{color:#48c6ff;margin-bottom:12px}
-.flow{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;margin-top:30px}
-.step{background:#123354;padding:17px;border:1px solid #48c6ff;border-radius:9px;text-align:center}
-.arrow{color:#48c6ff;font-size:25px}
-ul{padding-left:22px;color:#b6c9dc}
-li{margin:9px 0}
-footer{text-align:center;padding:30px;background:#0b1c32;color:#91a9c1}
-@media(max-width:600px){
-nav a{margin-left:6px;font-size:11px}
-header{padding:14px 4%}
-.logo{font-size:15px}
-section{padding:50px 6%}
-}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#080e1b;color:#e8f0ff;font-family:Arial,sans-serif}
+header{height:70px;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;background:#101a2b;border-bottom:1px solid #263650}
+.logo{font-size:21px;font-weight:bold;color:#48c6ff}
+nav a{color:#a9bad2;text-decoration:none;margin-left:18px;font-size:13px}
+.container{padding:28px 6%;max-width:1250px;margin:auto}
+.tag{color:#48c6ff;letter-spacing:3px;font-size:11px}
+h1{font-size:clamp(30px,5vw,48px);margin:15px 0}
+h1 span{color:#48c6ff}
+.sub{color:#9aabc4;line-height:1.7;max-width:650px}
+.status{display:inline-block;margin-top:20px;padding:9px 14px;border:1px solid #1d806d;border-radius:20px;color:#48e6b0;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin:30px 0}
+.card{background:#111d30;border:1px solid #263b58;border-radius:12px;padding:20px}
+.card small{color:#8da2bd}
+.number{font-size:29px;font-weight:bold;margin:12px 0;color:#fff}
+.green{color:#35e5a1}.yellow{color:#ffd166}.red{color:#ff657c}
+.section-title{font-size:21px;margin:35px 0 18px}
+.layout{display:grid;grid-template-columns:1.5fr 1fr;gap:18px}
+.road{background:#111d30;border:1px solid #263b58;border-radius:12px;padding:20px}
+.intersection{height:270px;position:relative;background:#172b3b;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:15px}
+.cross{position:absolute;background:#263545}
+.horizontal{width:100%;height:90px}
+.vertical{height:100%;width:90px}
+.center{z-index:2;background:#101c2d;padding:15px;border:1px solid #42566c;border-radius:8px;text-align:center}
+.lane{position:absolute;border:1px dashed #65768a}
+.lane.h{width:100%;top:50%}
+.lane.v{height:100%;left:50%}
+.signal{display:flex;gap:9px;justify-content:center;margin:12px 0}
+.light{height:18px;width:18px;border-radius:50%;background:#344256}
+.light.active.redlight{background:#ff405d;box-shadow:0 0 12px #ff405d}
+.light.active.yellowlight{background:#ffd166;box-shadow:0 0 12px #ffd166}
+.light.active.greenlight{background:#36e69e;box-shadow:0 0 12px #36e69e}
+.roadinfo{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #263650;font-size:13px}
+.bar{height:7px;background:#27374b;border-radius:10px;margin-top:8px;overflow:hidden}
+.fill{height:100%;border-radius:10px}
+button{background:#087fba;color:white;border:0;border-radius:7px;padding:12px 18px;margin-top:18px;font-weight:bold}
+button:active{opacity:.7}
+.chart{display:flex;align-items:end;gap:12px;height:160px;padding-top:20px}
+.chart div{flex:1;background:linear-gradient(#48c6ff,#1764b1);border-radius:5px 5px 0 0;position:relative;min-height:10px}
+.chart span{position:absolute;bottom:-24px;left:0;width:100%;text-align:center;color:#9aabc4;font-size:10px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.feature{background:#111d30;border:1px solid #263b58;border-radius:10px;padding:20px}
+.feature h3{color:#48c6ff;margin-bottom:10px}
+.feature p{color:#a5b5cb;font-size:13px;line-height:1.7}
+footer{text-align:center;padding:35px;color:#788ba5;border-top:1px solid #263650;margin-top:50px;font-size:12px}
+@media(max-width:750px){.grid{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.features{grid-template-columns:1fr}nav a{margin-left:8px;font-size:11px}.container{padding:22px 5%}}
 </style>
 </head>
 <body>
+
 <header>
-<div class="logo">SMART TRAFFIC AI</div>
+<div class="logo">◈ SMART TRAFFIC AI</div>
 <nav>
-<a href="#about">About</a>
+<a href="#dashboard">Dashboard</a>
 <a href="#system">System</a>
-<a href="#technology">Technology</a>
+<a href="#about">About</a>
 </nav>
 </header>
 
-<div class="hero">
-<div class="tag">ARTIFICIAL INTELLIGENCE PROJECT</div>
-<h1>Intelligent Traffic<br><span>Signal Management</span></h1>
-<p>An AI-based smart traffic signal concept using machine learning and traffic density detection to improve traffic flow.</p>
-<a class="btn" href="#about">Explore Project ↓</a>
-</div>
-
-<section id="about">
-<h2>Project <span>Abstract</span></h2>
-<p>Traffic congestion is a major problem in urban and semi-urban areas. Traditional traffic signals use fixed timing intervals without considering the actual number of vehicles on each road.</p>
-<p>This project proposes an AI-Based Smart Traffic Signal System that uses cameras, image processing and machine learning to detect and estimate vehicle density on different roads.</p>
-<p>Python and OpenCV are proposed for vehicle detection and image processing. Based on the detected traffic density, an Arduino Nano or compatible microcontroller controls traffic signal LEDs and adjusts green-light duration.</p>
-<p>The concept aims to reduce unnecessary waiting time, improve traffic flow and minimize fuel consumption and vehicle emissions.</p>
+<main class="container">
+<section>
+<div class="tag">ARTIFICIAL INTELLIGENCE • SMART MOBILITY</div>
+<h1>Intelligent <span>Traffic</span><br>Management System</h1>
+<p class="sub">An AI-based smart traffic signal system using Machine Learning, Python and OpenCV to detect vehicle density and dynamically optimize traffic signal timing.</p>
+<div class="status">● SYSTEM ONLINE — SIMULATION MODE</div>
 </section>
 
-<section id="problem">
-<h2>Problem <span>Statement</span></h2>
-<div class="cards">
-<div class="card"><h3>Fixed Timing</h3><p>Traditional signals operate with fixed intervals regardless of traffic conditions.</p></div>
-<div class="card"><h3>Long Waiting</h3><p>Vehicles on congested roads may experience unnecessary waiting times.</p></div>
-<div class="card"><h3>Fuel Wastage</h3><p>Prolonged idling can increase fuel consumption and vehicle emissions.</p></div>
+<section id="dashboard">
+<h2 class="section-title">Traffic Monitoring Dashboard</h2>
+<div class="grid">
+<div class="card"><small>Total Vehicles</small><div class="number" id="total">128</div><small class="green">● Vehicles detected</small></div>
+<div class="card"><small>Average Density</small><div class="number yellow" id="density">MEDIUM</div><small>● Traffic condition</small></div>
+<div class="card"><small>Active Signal</small><div class="number green" id="active">NORTH</div><small>● Green signal</small></div>
+<div class="card"><small>Green Duration</small><div class="number" id="timer">35s</div><small>● Optimized timing</small></div>
+</div>
+
+<div class="layout">
+<div class="road">
+<h3>Four-Way Intersection</h3>
+<p class="sub">Illustrative traffic density visualization</p>
+<div class="intersection">
+<div class="cross horizontal"></div>
+<div class="cross vertical"></div>
+<div class="lane h"></div><div class="lane v"></div>
+<div class="center">
+<strong>AI CONTROL</strong>
+<div class="signal" id="signals">
+<i class="light redlight active"></i>
+<i class="light yellowlight"></i>
+<i class="light greenlight"></i>
+</div>
+<small id="signaltext">NORTH GREEN</small>
+</div>
+</div>
+</div>
+
+<div class="road">
+<h3>Road Density Analysis</h3>
+<div id="roads"></div>
+<button onclick="updateTraffic()">↻ Update Traffic Data</button>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">Traffic Analytics</h2>
+<div class="card">
+<h3>Vehicle Distribution</h3>
+<div class="chart" id="chart"></div>
+<p class="sub" style="margin-top:35px">Illustrative vehicle count across four roads.</p>
 </div>
 </section>
 
 <section id="system">
-<h2>Proposed <span>System</span></h2>
-<p>The proposed system analyzes traffic images or videos to estimate vehicle density and allocate suitable green-light durations.</p>
-<div class="flow">
-<div class="step">📷<br>Camera Input</div>
-<div class="arrow">→</div>
-<div class="step">🤖<br>AI Detection</div>
-<div class="arrow">→</div>
-<div class="step">📊<br>Density Analysis</div>
-<div class="arrow">→</div>
-<div class="step">⚙️<br>Arduino Control</div>
-<div class="arrow">→</div>
-<div class="step">🚦<br>Signal Output</div>
+<h2 class="section-title">How The System Works</h2>
+<div class="features">
+<div class="feature"><h3>01. Image Processing</h3><p>A camera or recorded video provides traffic footage. Python and OpenCV process the images to identify vehicles.</p></div>
+<div class="feature"><h3>02. AI Detection</h3><p>Machine Learning or object detection estimates the number of vehicles and classifies traffic density as low, medium or high.</p></div>
+<div class="feature"><h3>03. Signal Control</h3><p>An Arduino Nano or compatible microcontroller controls signal LEDs according to the calculated green-light duration.</p></div>
 </div>
 </section>
 
-<section id="technology">
-<h2>Technologies <span>Used</span></h2>
-<div class="cards">
-<div class="card"><h3>Python</h3><p>Programming language for image processing and system logic.</p></div>
-<div class="card"><h3>OpenCV</h3><p>Image and video processing for vehicle detection.</p></div>
-<div class="card"><h3>Machine Learning</h3><p>Proposed approach for estimating traffic density.</p></div>
-<div class="card"><h3>Arduino Nano</h3><p>Microcontroller for controlling traffic signal LEDs.</p></div>
+<section id="about">
+<h2 class="section-title">Project Overview</h2>
+<div class="card">
+<h3>AI-Based Smart Traffic Signal System</h3>
+<p class="sub" style="margin-top:15px">The project aims to reduce unnecessary waiting time, improve traffic flow and minimize fuel consumption and vehicle emissions through adaptive traffic signal management.</p>
+<h3 style="margin-top:20px;color:#48c6ff">Technologies Used</h3>
+<p class="sub" style="margin-top:10px">Python • OpenCV • Machine Learning • Arduino Nano • Image Processing • Embedded Systems</p>
+<h3 style="margin-top:20px;color:#48c6ff">Future Enhancements</h3>
+<p class="sub" style="margin-top:10px">Live camera feeds, emergency vehicle detection, pedestrian detection, IoT connectivity and coordination between multiple intersections.</p>
 </div>
 </section>
-
-<section id="objectives">
-<h2>Project <span>Objectives</span></h2>
-<ul>
-<li>Detect and count vehicles on different roads.</li>
-<li>Classify traffic as low, medium or high density.</li>
-<li>Allocate green-light duration dynamically.</li>
-<li>Reduce unnecessary vehicle waiting time.</li>
-<li>Improve traffic management efficiency.</li>
-</ul>
-</section>
-
-<section id="future">
-<h2>Future <span>Scope</span></h2>
-<div class="cards">
-<div class="card"><h3>Emergency Detection</h3><p>Prioritize ambulances and emergency vehicles.</p></div>
-<div class="card"><h3>IoT Connectivity</h3><p>Connect multiple traffic intersections.</p></div>
-<div class="card"><h3>Pedestrian Detection</h3><p>Include pedestrian safety in traffic control.</p></div>
-<div class="card"><h3>Traffic Prediction</h3><p>Estimate future traffic conditions.</p></div>
-</div>
-</section>
+</main>
 
 <footer>
-<p>AI-Based Smart Traffic Signal System</p>
-<p>Academic Project Presentation | 2026</p>
+SMART TRAFFIC AI | Academic Project Presentation<br>
+Intelligent Transportation Management System
 </footer>
+
+<script>
+let roads=[35,72,48,90];
+let names=["NORTH","SOUTH","EAST","WEST"];
+let active=0;
+let remaining=35;
+
+function render(){
+let total=roads.reduce((a,b)=>a+b,0);
+let avg=total/4;
+document.getElementById("total").textContent=total;
+document.getElementById("density").textContent=avg<35?"LOW":avg<65?"MEDIUM":"HIGH";
+document.getElementById("density").className="number "+(avg<35?"green":avg<65?"yellow":"red");
+document.getElementById("active").textContent=names[active];
+document.getElementById("timer").textContent=remaining+"s";
+document.getElementById("signaltext").textContent=names[active]+" GREEN";
+document.getElementById("signals").innerHTML='<i class="light redlight"></i><i class="light yellowlight"></i><i class="light greenlight active"></i>';
+document.getElementById("roads").innerHTML=roads.map((v,i)=>`
+<div class="roadinfo"><span>${names[i]}</span><strong>${v} vehicles</strong></div>
+<div class="bar"><div class="fill" style="width:${v}%;background:${v>65?'#ff657c':v>35?'#ffd166':'#35e5a1'}"></div></div>
+`).join("");
+document.getElementById("chart").innerHTML=roads.map((v,i)=>`<div style="height:${v}%"><span>${names[i]}</span></div>`).join("");
+}
+
+function updateTraffic(){
+roads=roads.map(()=>Math.floor(Math.random()*85)+10);
+active=roads.indexOf(Math.max(...roads));
+remaining=Math.min(60,Math.max(15,15+Math.round(roads[active]*0.5)));
+render();
+}
+
+render();
+setInterval(()=>{
+remaining--;
+if(remaining<=0)updateTraffic();
+else render();
+},1000);
+</script>
 </body>
 </html>
