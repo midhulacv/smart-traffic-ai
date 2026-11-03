@@ -4,456 +4,453 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMARTFLOW AI | Intelligent Traffic System</title>
+<meta name="theme-color" content="#07111f">
+<title>Smart Traffic AI | Intelligent Traffic Management</title>
+
 <style>
-:root {
-  --bg:#070d19;
-  --panel:#101b2d;
-  --panel2:#14233a;
-  --cyan:#00e5ff;
-  --blue:#3988ff;
-  --green:#25e69a;
-  --yellow:#ffca55;
-  --red:#ff5b69;
-  --text:#edf5ff;
-  --muted:#8ea3bd;
-  --border:rgba(115,170,220,.17);
+:root{
+--bg:#07111f;--panel:#101e32;--panel2:#152740;
+--cyan:#00e5ff;--blue:#448cff;--green:#28df9b;
+--yellow:#ffc857;--red:#ff6474;--text:#eff7ff;
+--muted:#9aacc4;--border:rgba(120,170,220,.18);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
-  line-height:1.6;
+background:var(--bg);color:var(--text);
+font-family:Arial,Helvetica,sans-serif;line-height:1.6
 }
 header{
-  position:sticky;top:0;z-index:10;
-  background:rgba(7,13,25,.94);
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid var(--border);
-  padding:15px 6%;
-  display:flex;justify-content:space-between;
-  align-items:center;gap:15px;flex-wrap:wrap;
+position:sticky;top:0;z-index:20;
+display:flex;justify-content:space-between;align-items:center;
+flex-wrap:wrap;gap:12px;padding:15px 6%;
+background:rgba(7,17,31,.96);
+border-bottom:1px solid var(--border);
+backdrop-filter:blur(15px)
 }
-.logo{font-size:20px;font-weight:800;letter-spacing:2px}
+.logo{font-size:20px;font-weight:900;letter-spacing:2px}
 .logo span{color:var(--cyan)}
-nav{display:flex;gap:19px;flex-wrap:wrap}
-nav a{color:var(--muted);text-decoration:none;font-size:13px}
+nav{display:flex;gap:16px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-size:12px}
 nav a:hover{color:var(--cyan)}
-.container{width:88%;max-width:1200px;margin:auto}
+.container{width:90%;max-width:1200px;margin:auto}
 .hero{padding:75px 0 45px}
 .tag{
-  display:inline-block;color:var(--cyan);
-  border:1px solid rgba(0,229,255,.3);
-  padding:6px 12px;border-radius:20px;
-  font-size:11px;letter-spacing:1.5px;
+display:inline-block;border:1px solid #176276;color:var(--cyan);
+padding:6px 12px;border-radius:30px;font-size:11px;letter-spacing:1.3px
 }
-h1{font-size:clamp(34px,6vw,60px);line-height:1.12;margin:22px 0}
+h1{font-size:clamp(36px,7vw,64px);line-height:1.12;margin:20px 0}
 h1 span{color:var(--cyan)}
-.hero p{color:var(--muted);max-width:720px;font-size:16px}
-.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.hero p{max-width:760px;color:var(--muted);font-size:16px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
 .btn{
-  display:inline-block;padding:12px 20px;border-radius:8px;
-  background:var(--cyan);color:#04111c;text-decoration:none;
-  font-weight:bold;border:0;cursor:pointer;
+padding:12px 19px;border:0;border-radius:8px;
+background:var(--cyan);color:#04131c;font-weight:bold;
+cursor:pointer;text-decoration:none;font-size:13px
 }
-.btn.secondary{background:transparent;color:var(--cyan);border:1px solid var(--cyan)}
-section{padding:48px 0;scroll-margin-top:75px}
-.section-title{font-size:27px;margin-bottom:8px}
-.section-sub{color:var(--muted);margin-bottom:25px;font-size:14px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.btn.alt{background:transparent;border:1px solid var(--cyan);color:var(--cyan)}
+.btn:hover{opacity:.85}
+section{padding:45px 0;scroll-margin-top:80px}
+h2{font-size:27px;margin-bottom:6px}
+.sub{font-size:13px;color:var(--muted);margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .card{
-  background:linear-gradient(145deg,var(--panel),#0c1728);
-  border:1px solid var(--border);border-radius:13px;
-  padding:20px;
+background:linear-gradient(145deg,var(--panel),#0c192a);
+border:1px solid var(--border);border-radius:13px;padding:19px
 }
-.metric{font-size:30px;font-weight:800;color:var(--cyan);margin:7px 0}
+.metric{font-size:29px;font-weight:800;color:var(--cyan);margin:6px 0}
 .small{font-size:12px;color:var(--muted)}
-.demo-label{color:var(--yellow);font-size:11px;letter-spacing:1px}
-.dashboard-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
-.road-list{display:grid;gap:15px;margin-top:18px}
-.road-top{display:flex;justify-content:space-between;gap:10px;font-size:13px}
-.track{height:9px;background:#26364b;border-radius:20px;margin-top:8px;overflow:hidden}
-.fill{height:100%;border-radius:20px;transition:width .5s}
-.low{background:var(--green)}
-.medium{background:var(--yellow)}
-.high{background:var(--red)}
+.label{font-size:10px;color:var(--muted);letter-spacing:1px}
+.demo{color:var(--yellow);font-size:10px;letter-spacing:1.2px}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+.road-list{display:grid;gap:16px;margin-top:18px}
+.roadtop{display:flex;justify-content:space-between;gap:8px;font-size:12px}
+.track{height:9px;background:#28384d;border-radius:20px;margin-top:7px;overflow:hidden}
+.fill{height:100%;border-radius:20px;transition:width .4s}
+.low{background:var(--green)}.medium{background:var(--yellow)}.high{background:var(--red)}
 .intersection{
-  background:#17253a;border-radius:14px;
-  min-height:245px;position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
-  margin-top:16px;
+height:250px;position:relative;overflow:hidden;margin-top:15px;
+background:#14243a;border-radius:12px;display:flex;
+align-items:center;justify-content:center
 }
-.crossroad{
-  position:absolute;background:#26364b;
-}
-.crossroad.horizontal{height:65px;width:100%}
-.crossroad.vertical{width:65px;height:100%}
-.center-mark{
-  position:relative;z-index:2;background:#101b2d;
-  border:1px solid var(--border);border-radius:10px;
-  padding:13px;text-align:center;font-size:12px;
+.road{position:absolute;background:#2b3a4e}
+.road.h{width:100%;height:65px}.road.v{height:100%;width:65px}
+.center{
+z-index:2;background:#0b1728;padding:13px;
+border:1px solid var(--border);border-radius:9px;text-align:center;font-size:12px
 }
 .signal{
-  position:absolute;z-index:3;background:#080d16;
-  border:1px solid #526078;border-radius:20px;
-  padding:7px;display:flex;gap:5px;
+position:absolute;z-index:3;background:#050a12;border:1px solid #65758b;
+border-radius:20px;padding:7px;display:flex;gap:5px
 }
-.signal i{width:12px;height:12px;border-radius:50%;background:#303b4d}
-.signal i.active.red{background:var(--red);box-shadow:0 0 10px var(--red)}
-.signal i.active.yellow{background:var(--yellow);box-shadow:0 0 10px var(--yellow)}
-.signal i.active.green{background:var(--green);box-shadow:0 0 10px var(--green)}
-.signal.top{top:12px;left:50%;transform:translateX(-50%);flex-direction:column}
-.signal.bottom{bottom:12px;left:50%;transform:translateX(-50%);flex-direction:column}
-.signal.left{left:12px;top:50%;transform:translateY(-50%)}
-.signal.right{right:12px;top:50%;transform:translateY(-50%)}
-.status{display:inline-block;padding:4px 9px;border-radius:20px;font-size:11px}
-.status.green{background:#123d34;color:var(--green)}
-.status.yellow{background:#493c1d;color:var(--yellow)}
-.status.red{background:#4b2029;color:var(--red)}
-button{font:inherit}
-.demo-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
-.info-card h3{color:var(--cyan);margin-bottom:8px;font-size:16px}
-.info-card p,.info-card li{color:var(--muted);font-size:13px}
-.info-card ul{padding-left:18px}
+.signal i{width:12px;height:12px;border-radius:50%;background:#303c4e}
+.signal i.on.red{background:var(--red);box-shadow:0 0 9px var(--red)}
+.signal i.on.yellow{background:var(--yellow);box-shadow:0 0 9px var(--yellow)}
+.signal i.on.green{background:var(--green);box-shadow:0 0 9px var(--green)}
+.signal.n,.signal.s{flex-direction:column;left:50%;transform:translateX(-50%)}
+.signal.n{top:8px}.signal.s{bottom:8px}
+.signal.e,.signal.w{top:50%;transform:translateY(-50%)}
+.signal.e{right:8px}.signal.w{left:8px}
+.status{display:inline-block;padding:4px 9px;border-radius:20px;font-size:10px}
+.status.green{background:#123b32;color:var(--green)}
+.status.red{background:#47212a;color:var(--red)}
+.status.yellow{background:#44371d;color:var(--yellow)}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.info h3{color:var(--cyan);font-size:16px;margin-bottom:8px}
+.info p,.info li{font-size:13px;color:var(--muted)}
+.info ul{padding-left:18px}
 .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.flow-item{text-align:center;padding:18px 10px}
-.flow-item .number{font-size:23px;color:var(--cyan);font-weight:bold}
-.cost{font-size:36px;color:var(--green);font-weight:800;margin:8px 0}
-.cost-table{width:100%;border-collapse:collapse;font-size:13px}
-.cost-table td{padding:12px;border-bottom:1px solid var(--border)}
-.cost-table td:last-child{text-align:right;color:var(--cyan)}
+.flow .card{text-align:center}
+.num{font-size:25px;color:var(--cyan);font-weight:bold}
+table{width:100%;border-collapse:collapse;font-size:13px}
+td,th{padding:11px;text-align:left;border-bottom:1px solid var(--border)}
+th{color:var(--cyan)}
+td:last-child{text-align:right}
+.cost{font-size:36px;font-weight:900;color:var(--green);margin:8px 0}
 footer{
-  text-align:center;padding:30px 6%;
-  border-top:1px solid var(--border);
-  color:var(--muted);font-size:12px;margin-top:35px;
+margin-top:30px;padding:30px 6%;text-align:center;
+border-top:1px solid var(--border);color:var(--muted);font-size:12px
 }
 footer strong{color:var(--cyan)}
 @media(max-width:800px){
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .dashboard-grid{grid-template-columns:1fr}
-  .flow{grid-template-columns:repeat(2,1fr)}
+.grid{grid-template-columns:repeat(2,1fr)}
+.two{grid-template-columns:1fr}
+.flow{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:520px){
-  .container{width:91%}
-  header{padding:13px 5%}
-  nav{gap:12px}
-  nav a{font-size:11px}
-  .hero{padding-top:55px}
-  .grid{gap:9px}
-  .card{padding:14px}
-  .metric{font-size:25px}
-  .info-grid{grid-template-columns:1fr}
-  .section-title{font-size:23px}
+.container{width:92%}header{padding:13px 4%}
+nav{gap:10px}nav a{font-size:10px}
+.hero{padding-top:50px}
+.card{padding:14px}.metric{font-size:24px}
+.info-grid{grid-template-columns:1fr}
+h2{font-size:23px}
 }
 </style>
 </head>
-<body>
 
+<body>
 <header>
-  <div class="logo">SMART<span>FLOW</span> AI</div>
-  <nav>
-    <a href="#dashboard">Dashboard</a>
-    <a href="#about">About</a>
-    <a href="#technology">Technology</a>
-    <a href="#workflow">Workflow</a>
-    <a href="#cost">Cost</a>
-  </nav>
+<div class="logo">SMART<span>FLOW</span> AI</div>
+<nav>
+<a href="#dashboard">Dashboard</a>
+<a href="#about">About</a>
+<a href="#method">Methodology</a>
+<a href="#technology">Technology</a>
+<a href="#budget">Budget</a>
+<a href="#future">Future</a>
+</nav>
 </header>
 
 <main class="container">
 
 <div class="hero">
-  <span class="tag">AI-BASED INTELLIGENT TRANSPORTATION</span>
-  <h1>SMART TRAFFIC<br><span>SIGNAL SYSTEM</span></h1>
-  <p>
-    An intelligent traffic management concept using Machine Learning,
-    Python and OpenCV to detect vehicle density and dynamically
-    allocate traffic signal timing.
-  </p>
-  <div class="hero-buttons">
-    <a href="#dashboard" class="btn">Explore Dashboard</a>
-    <a href="#about" class="btn secondary">Project Overview</a>
-  </div>
+<span class="tag">AI-BASED INTELLIGENT TRANSPORTATION</span>
+<h1>SMART TRAFFIC<br><span>SIGNAL SYSTEM</span></h1>
+<p>
+An AI-based smart traffic signal concept using Machine Learning,
+Python and OpenCV to detect vehicles, estimate traffic density
+and dynamically determine green-light duration.
+</p>
+<div class="actions">
+<a class="btn" href="#dashboard">Explore Dashboard</a>
+<a class="btn alt" href="#method">View Methodology</a>
+</div>
 </div>
 
 <section id="dashboard">
-  <h2 class="section-title">Traffic Monitoring Dashboard</h2>
-  <p class="section-sub">Illustrative traffic simulation — not a live camera feed.</p>
+<h2>Traffic Monitoring Dashboard</h2>
+<p class="sub">Interactive demonstration using simulated traffic values. Not connected to a live camera.</p>
 
-  <div class="grid">
-    <div class="card">
-      <div class="small">TOTAL VEHICLES</div>
-      <div class="metric" id="total">86</div>
-      <div class="small">Simulated vehicle count</div>
-    </div>
-    <div class="card">
-      <div class="small">TRAFFIC CONDITION</div>
-      <div class="metric" id="condition">HIGH</div>
-      <div class="small">Overall demo density</div>
-    </div>
-    <div class="card">
-      <div class="small">ACTIVE ROAD</div>
-      <div class="metric" id="activeRoad">NORTH</div>
-      <div class="small">Illustrative signal selection</div>
-    </div>
-    <div class="card">
-      <div class="small">GREEN DURATION</div>
-      <div class="metric" id="duration">30s</div>
-      <div class="small">Demo timing example</div>
-    </div>
-  </div>
+<div class="grid">
+<div class="card">
+<div class="label">TOTAL VEHICLES</div>
+<div class="metric" id="total">86</div>
+<div class="small">Simulated vehicle count</div>
+</div>
+<div class="card">
+<div class="label">OVERALL DENSITY</div>
+<div class="metric" id="overall">HIGH</div>
+<div class="small">Based on busiest road</div>
+</div>
+<div class="card">
+<div class="label">SELECTED ROAD</div>
+<div class="metric" id="active">NORTH</div>
+<div class="small">Highest simulated traffic</div>
+</div>
+<div class="card">
+<div class="label">GREEN DURATION</div>
+<div class="metric" id="duration">30s</div>
+<div class="small">Illustrative timing</div>
+</div>
+</div>
 
-  <div class="dashboard-grid" style="margin-top:18px">
-    <div class="card">
-      <div class="demo-label">● SIMULATED VEHICLE DENSITY</div>
-      <h3 style="margin-top:8px">Road-wise Traffic Analysis</h3>
-      <div class="road-list" id="roads">
-        <div>
-          <div class="road-top"><span>North Road</span><span>35 vehicles · High</span></div>
-          <div class="track"><div class="fill high" style="width:85%"></div></div>
-        </div>
-        <div>
-          <div class="road-top"><span>South Road</span><span>22 vehicles · Medium</span></div>
-          <div class="track"><div class="fill medium" style="width:55%"></div></div>
-        </div>
-        <div>
-          <div class="road-top"><span>East Road</span><span>18 vehicles · Medium</span></div>
-          <div class="track"><div class="fill medium" style="width:45%"></div></div>
-        </div>
-        <div>
-          <div class="road-top"><span>West Road</span><span>11 vehicles · Low</span></div>
-          <div class="track"><div class="fill low" style="width:28%"></div></div>
-        </div>
-      </div>
-      <div class="demo-controls">
-        <button class="btn" onclick="runDemo()">Run Demo Simulation</button>
-        <button class="btn secondary" onclick="resetDemo()">Reset</button>
-      </div>
-    </div>
+<div class="two" style="margin-top:16px">
+<div class="card">
+<div class="demo">● SIMULATION MODE</div>
+<h3 style="margin-top:8px">Road-wise Vehicle Density</h3>
+<div class="road-list" id="roads"></div>
+<div class="controls">
+<button class="btn" onclick="runDemo()">Run Demo Simulation</button>
+<button class="btn alt" onclick="resetDemo()">Reset</button>
+</div>
+<p class="small" style="margin-top:12px">Values are randomly generated for demonstration purposes.</p>
+</div>
 
-    <div class="card">
-      <div class="demo-label">● SIGNAL VISUALIZATION — DEMO</div>
-      <h3 style="margin-top:8px">Four-Way Intersection</h3>
-      <div class="intersection">
-        <div class="crossroad horizontal"></div>
-        <div class="crossroad vertical"></div>
-        <div class="signal top" id="northSignal"><i class="red active"></i><i class="yellow"></i><i class="green"></i></div>
-        <div class="signal bottom" id="southSignal"><i class="red active"></i><i class="yellow"></i><i class="green"></i></div>
-        <div class="signal left" id="westSignal"><i class="red active"></i><i class="yellow"></i><i class="green"></i></div>
-        <div class="signal right" id="eastSignal"><i class="red active"></i><i class="yellow"></i><i class="green"></i></div>
-        <div class="center-mark">SMART<br>CONTROL</div>
-      </div>
-      <p class="small" style="margin-top:12px">
-        Selected road: <strong id="signalRoad">North</strong>
-        <span class="status green" id="signalStatus">GREEN</span>
-      </p>
-    </div>
-  </div>
+<div class="card">
+<div class="demo">● INTERSECTION SIGNAL SIMULATION</div>
+<h3 style="margin-top:8px">Four-Way Traffic Junction</h3>
+<div class="intersection">
+<div class="road h"></div><div class="road v"></div>
+<div class="signal n" id="sigNorth"><i class="on red"></i><i></i><i></i></div>
+<div class="signal s" id="sigSouth"><i class="on red"></i><i></i><i></i></div>
+<div class="signal e" id="sigEast"><i class="on red"></i><i></i><i></i></div>
+<div class="signal w" id="sigWest"><i class="on red"></i><i></i><i></i></div>
+<div class="center">SMART<br>CONTROL</div>
+</div>
+<p class="small" style="margin-top:12px">
+Selected road: <strong id="signalRoad">North</strong>
+<span class="status green" id="signalStatus">GREEN</span>
+</p>
+</div>
+</div>
 </section>
 
 <section id="about">
-  <h2 class="section-title">Project Overview</h2>
-  <p class="section-sub">The problem, proposed solution and objectives.</p>
-  <div class="info-grid">
-    <div class="card info-card">
-      <h3>The Problem</h3>
-      <p>
-        Conventional traffic signals generally use fixed time intervals
-        without considering actual vehicle density. This can waste green
-        time on less crowded roads while congested roads experience long waits.
-      </p>
-    </div>
-    <div class="card info-card">
-      <h3>Proposed Solution</h3>
-      <p>
-        The proposed system uses a camera or pre-recorded traffic video.
-        Vehicle detection and density estimation help determine suitable
-        green-light durations for each road.
-      </p>
-    </div>
-    <div class="card info-card">
-      <h3>Project Objectives</h3>
-      <ul>
-        <li>Detect and count vehicles.</li>
-        <li>Classify traffic as low, medium or high.</li>
-        <li>Adjust green-light timing based on density.</li>
-        <li>Reduce unnecessary waiting and idling.</li>
-      </ul>
-    </div>
-    <div class="card info-card">
-      <h3>Expected Outcomes</h3>
-      <ul>
-        <li>Improved traffic-flow efficiency.</li>
-        <li>Reduced unnecessary waiting time.</li>
-        <li>Potential reduction in fuel consumption.</li>
-        <li>Lower emissions from prolonged idling.</li>
-      </ul>
-    </div>
-  </div>
+<h2>Project Overview</h2>
+<p class="sub">Understanding the problem and the proposed intelligent solution.</p>
+<div class="info-grid">
+<div class="card info">
+<h3>Problem Statement</h3>
+<p>
+Conventional traffic signals generally use fixed time intervals
+without considering the actual number of vehicles on each road.
+This can waste green-light time on less crowded roads while
+heavily congested roads experience unnecessary waiting.
+</p>
+</div>
+<div class="card info">
+<h3>Proposed Solution</h3>
+<p>
+The proposed system uses a camera or pre-recorded traffic video.
+Image processing and machine learning are used to detect vehicles,
+estimate road-wise traffic density and determine suitable signal timing.
+</p>
+</div>
+<div class="card info">
+<h3>Project Objectives</h3>
+<ul>
+<li>Detect and count vehicles on different roads.</li>
+<li>Classify traffic into low, medium and high density.</li>
+<li>Allocate green-light time according to traffic density.</li>
+<li>Reduce unnecessary waiting and prolonged idling.</li>
+</ul>
+</div>
+<div class="card info">
+<h3>Expected Benefits</h3>
+<ul>
+<li>Improved traffic-flow efficiency.</li>
+<li>Reduced unnecessary waiting time.</li>
+<li>Potential reduction in fuel consumption.</li>
+<li>Potential reduction in vehicle emissions and air pollution.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="method">
+<h2>Methodology</h2>
+<p class="sub">Proposed working process of the academic prototype.</p>
+
+<div class="flow">
+<div class="card">
+<div class="num">01</div><h3>Input</h3>
+<p class="small">Camera or pre-recorded traffic video</p>
+</div>
+<div class="card">
+<div class="num">02</div><h3>Processing</h3>
+<p class="small">Python and OpenCV process image frames</p>
+</div>
+<div class="card">
+<div class="num">03</div><h3>Detection</h3>
+<p class="small">Object detection and vehicle counting</p>
+</div>
+<div class="card">
+<div class="num">04</div><h3>Classification</h3>
+<p class="small">Low, medium or high traffic density</p>
+</div>
+<div class="card">
+<div class="num">05</div><h3>Signal Control</h3>
+<p class="small">Arduino Nano controls signal LEDs</p>
+</div>
+</div>
+
+<div class="two" style="margin-top:16px">
+<div class="card">
+<h3 style="color:var(--cyan)">Example Density Classification</h3>
+<p class="small" style="margin:8px 0 12px">Illustrative thresholds for the proposed prototype.</p>
+<table>
+<tr><th>Vehicle count</th><th>Density</th></tr>
+<tr><td>0–10</td><td style="color:var(--green)">Low</td></tr>
+<tr><td>11–25</td><td style="color:var(--yellow)">Medium</td></tr>
+<tr><td>Above 25</td><td style="color:var(--red)">High</td></tr>
+</table>
+</div>
+<div class="card">
+<h3 style="color:var(--cyan)">Example Adaptive Signal Timing</h3>
+<p class="small" style="margin:8px 0 12px">Illustrative green-light duration, subject to implementation and testing.</p>
+<table>
+<tr><th>Traffic density</th><th>Green time</th></tr>
+<tr><td>Low</td><td>10 seconds</td></tr>
+<tr><td>Medium</td><td>20 seconds</td></tr>
+<tr><td>High</td><td>30 seconds</td></tr>
+</table>
+</div>
+</div>
 </section>
 
 <section id="technology">
-  <h2 class="section-title">Technology Stack</h2>
-  <p class="section-sub">Software and low-cost hardware proposed for the prototype.</p>
-  <div class="grid">
-    <div class="card">
-      <h3 style="color:var(--cyan)">Python</h3>
-      <p class="small">Main programming language for image processing and system logic.</p>
-    </div>
-    <div class="card">
-      <h3 style="color:var(--cyan)">OpenCV</h3>
-      <p class="small">Image and video processing for vehicle detection.</p>
-    </div>
-    <div class="card">
-      <h3 style="color:var(--cyan)">Machine Learning</h3>
-      <p class="small">Lightweight model or object detection method for estimating traffic density.</p>
-    </div>
-    <div class="card">
-      <h3 style="color:var(--cyan)">Arduino Nano</h3>
-      <p class="small">Microcontroller proposed to control traffic signal LEDs.</p>
-    </div>
-  </div>
+<h2>Technology and Requirements</h2>
+<p class="sub">Proposed software, hardware and input components.</p>
+<div class="info-grid">
+<div class="card info">
+<h3>Software Requirements</h3>
+<ul>
+<li>Python – programming and system logic.</li>
+<li>OpenCV – image and video processing.</li>
+<li>Machine learning / object detection – vehicle detection and density estimation.</li>
+<li>Existing laptop – main processing platform.</li>
+</ul>
+</div>
+<div class="card info">
+<h3>Hardware Requirements</h3>
+<ul>
+<li>Arduino Nano or compatible microcontroller.</li>
+<li>Red, yellow and green LEDs.</li>
+<li>Resistors and connecting wires.</li>
+<li>Camera or pre-recorded traffic video as input.</li>
+</ul>
+</div>
+</div>
 </section>
 
-<section id="workflow">
-  <h2 class="section-title">System Workflow</h2>
-  <p class="section-sub">How the proposed smart traffic signal system works.</p>
-  <div class="flow">
-    <div class="card flow-item">
-      <div class="number">01</div>
-      <h3>Input</h3>
-      <p class="small">Camera or recorded traffic video</p>
-    </div>
-    <div class="card flow-item">
-      <div class="number">02</div>
-      <h3>Processing</h3>
-      <p class="small">Python and OpenCV</p>
-    </div>
-    <div class="card flow-item">
-      <div class="number">03</div>
-      <h3>Detection</h3>
-      <p class="small">Vehicle counting and ML density estimation</p>
-    </div>
-    <div class="card flow-item">
-      <div class="number">04</div>
-      <h3>Decision</h3>
-      <p class="small">Low, medium or high density</p>
-    </div>
-    <div class="card flow-item">
-      <div class="number">05</div>
-      <h3>Signal Control</h3>
-      <p class="small">Arduino Nano and signal LEDs</p>
-    </div>
-  </div>
-</section>
-
-<section id="cost">
-  <h2 class="section-title">Low-Cost Prototype</h2>
-  <p class="section-sub">Estimated hardware budget stated in the project abstract.</p>
-  <div class="dashboard-grid">
-    <div class="card">
-      <div class="small">TARGET ESTIMATED HARDWARE COST</div>
-      <div class="cost">Below ₹500</div>
-      <p class="small">
-        The concept uses an existing laptop for image processing,
-        reducing the need for a separate computer. Actual component
-        prices depend on availability and specifications.
-      </p>
-    </div>
-    <div class="card">
-      <h3 style="margin-bottom:12px">Proposed Hardware</h3>
-      <table class="cost-table">
-        <tr><td>Arduino Nano / compatible board</td><td>Budget dependent</td></tr>
-        <tr><td>Traffic signal LEDs</td><td>Budget dependent</td></tr>
-        <tr><td>Resistors and connecting wires</td><td>Budget dependent</td></tr>
-        <tr><td>Existing laptop</td><td>Already available</td></tr>
-      </table>
-      <p class="small" style="margin-top:12px">
-        Final cost should be confirmed using actual local component prices.
-      </p>
-    </div>
-  </div>
+<section id="budget">
+<h2>Low-Cost Prototype</h2>
+<p class="sub">Target hardware budget stated in the project abstract.</p>
+<div class="two">
+<div class="card">
+<div class="label">ESTIMATED HARDWARE BUDGET TARGET</div>
+<div class="cost">Below ₹500</div>
+<p class="small">
+The proposed design uses an existing laptop for image processing
+and a low-cost microcontroller for signal LED control. Actual
+cost depends on component selection and local prices.
+</p>
+</div>
+<div class="card">
+<h3 style="color:var(--cyan);margin-bottom:10px">Proposed Components</h3>
+<table>
+<tr><td>Arduino Nano / compatible board</td><td>Required</td></tr>
+<tr><td>Signal LEDs</td><td>Required</td></tr>
+<tr><td>Resistors and wires</td><td>Required</td></tr>
+<tr><td>Existing laptop</td><td>For processing</td></tr>
+<tr><td>Camera / recorded video</td><td>Input source</td></tr>
+</table>
+<p class="small" style="margin-top:10px">The below ₹500 figure is a target estimate, not a verified final bill of materials.</p>
+</div>
+</div>
 </section>
 
 <section id="future">
-  <h2 class="section-title">Future Enhancements</h2>
-  <p class="section-sub">Possible improvements beyond the initial academic prototype.</p>
-  <div class="grid">
-    <div class="card"><h3 style="color:var(--cyan)">Live Camera Feed</h3><p class="small">Real-time traffic monitoring.</p></div>
-    <div class="card"><h3 style="color:var(--cyan)">Emergency Detection</h3><p class="small">Priority signal control for emergency vehicles.</p></div>
-    <div class="card"><h3 style="color:var(--cyan)">Pedestrian Detection</h3><p class="small">Improved pedestrian safety.</p></div>
-    <div class="card"><h3 style="color:var(--cyan)">IoT Connectivity</h3><p class="small">Communication and coordination between intersections.</p></div>
-  </div>
+<h2>Future Enhancements</h2>
+<p class="sub">Possible extensions beyond the initial academic prototype.</p>
+<div class="grid">
+<div class="card info">
+<h3>Live Camera Feed</h3>
+<p>Real-time traffic monitoring and vehicle detection.</p>
+</div>
+<div class="card info">
+<h3>Emergency Detection</h3>
+<p>Priority signal allocation for emergency vehicles.</p>
+</div>
+<div class="card info">
+<h3>Pedestrian Detection</h3>
+<p>Improved pedestrian awareness and road safety.</p>
+</div>
+<div class="card info">
+<h3>Traffic Prediction</h3>
+<p>Predicting traffic flow using historical and current data.</p>
+</div>
+<div class="card info">
+<h3>IoT Connectivity</h3>
+<p>Sharing traffic information between connected systems.</p>
+</div>
+<div class="card info">
+<h3>Multiple Intersections</h3>
+<p>Coordinating signal operation across connected junctions.</p>
+</div>
+</div>
 </section>
 
 </main>
 
 <footer>
-  <strong>SMARTFLOW AI</strong><br>
-  AI-Based Smart Traffic Signal System using Machine Learning and Real-Time Traffic Density Detection<br>
-  <p style="margin-top:8px">Academic project concept · Simulation dashboard</p>
+<strong>SMARTFLOW AI</strong><br>
+AI-Based Smart Traffic Signal System using Machine Learning and Real-Time Traffic Density Detection
+<p style="margin-top:8px">Academic project concept · Simulation dashboard · Proposed prototype</p>
 </footer>
 
 <script>
-const names = ["North","South","East","West"];
-let counts = [35,22,18,11];
+const names=["North","South","East","West"];
+let counts=[35,22,18,11];
 
 function density(n){
-  if(n >= 30) return "High";
-  if(n >= 15) return "Medium";
-  return "Low";
+if(n<=10)return "Low";
+if(n<=25)return "Medium";
+return "High";
 }
-function duration(n){
-  if(n >= 30) return 30;
-  if(n >= 15) return 20;
-  return 10;
+function greenTime(n){
+if(n<=10)return 10;
+if(n<=25)return 20;
+return 30;
 }
-function updateDashboard(){
-  const total = counts.reduce((a,b)=>a+b,0);
-  document.getElementById("total").textContent = total;
-  const levels = counts.map(density);
-  const overall = Math.max(...counts);
-  document.getElementById("condition").textContent = density(overall).toUpperCase();
+function update(){
+const total=counts.reduce((a,b)=>a+b,0);
+const selected=counts.indexOf(Math.max(...counts));
+const level=density(counts[selected]);
+document.getElementById("total").textContent=total;
+document.getElementById("overall").textContent=level.toUpperCase();
+document.getElementById("active").textContent=names[selected].toUpperCase();
+document.getElementById("duration").textContent=greenTime(counts[selected])+"s";
+document.getElementById("signalRoad").textContent=names[selected];
 
-  const selected = counts.indexOf(overall);
-  const road = names[selected];
-  document.getElementById("activeRoad").textContent = road.toUpperCase();
-  document.getElementById("duration").textContent = duration(overall)+"s";
-  document.getElementById("signalRoad").textContent = road;
+document.getElementById("roads").innerHTML=counts.map((n,i)=>{
+const d=density(n);
+const width=Math.min(100,n/40*100);
+return `<div>
+<div class="roadtop"><span>${names[i]} Road</span>
+<span>${n} vehicles · ${d}</span></div>
+<div class="track"><div class="fill ${d.toLowerCase()}" style="width:${width}%"></div></div>
+</div>`;
+}).join("");
 
-  document.getElementById("roads").innerHTML = counts.map((n,i)=>{
-    const level = density(n);
-    const width = Math.min(100,n/40*100);
-    return `<div>
-      <div class="road-top"><span>${names[i]} Road</span>
-      <span>${n} vehicles · ${level}</span></div>
-      <div class="track"><div class="fill ${level.toLowerCase()}" style="width:${width}%"></div></div>
-    </div>`;
-  }).join("");
-
-  names.forEach((name,i)=>{
-    const el = document.getElementById(name.toLowerCase()+"Signal");
-    const lamps = el.querySelectorAll("i");
-    lamps.forEach(lamp=>lamp.classList.remove("active"));
-    lamps[0].classList.add("active","red");
-    if(i===selected){
-      lamps[0].classList.remove("active");
-      lamps[2].classList.add("active","green");
-    }
-  });
+names.forEach((name,i)=>{
+const signal=document.getElementById("sig"+name);
+const lamps=signal.querySelectorAll("i");
+lamps.forEach(l=>l.className="");
+if(i===selected)lamps[2].className="on green";
+else lamps[0].className="on red";
+});
 }
 function runDemo(){
-  counts = counts.map(()=>Math.floor(Math.random()*35)+5);
-  updateDashboard();
+counts=counts.map(()=>Math.floor(Math.random()*40));
+update();
 }
 function resetDemo(){
-  counts = [35,22,18,11];
-  updateDashboard();
+counts=[35,22,18,11];
+update();
 }
-updateDashboard();
+update();
 </script>
 </body>
 </html>
